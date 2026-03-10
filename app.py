@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from backend.detection_engine import analyze_email
+from flask import render_template
 from backend.ocr_engine import extract_text_from_image
 import os
 
@@ -14,7 +15,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 @app.route("/")
 def home():
-    return {"message": "AI-Based Email Fraud Detection API Running"}
+    return render_template("index.html")
 
 
 @app.route("/analyze-text", methods=["POST"])
